@@ -34,6 +34,9 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif}
 :root[data-theme="dark"]{--rtx:#E8A598}
 .btn-line{color:var(--rtx);border-color:var(--rtx)}.btn-line:hover{color:#2a1512;background:var(--rose2);border-color:var(--rose2)}
 .chip{min-height:44px}
+#mobileMenu::-webkit-scrollbar{display:none}#mobileMenu a{padding:.7rem 0}
+html{scroll-padding-top:calc(124px + env(safe-area-inset-top,0px))}
+@media (min-width:1024px){html{scroll-padding-top:calc(88px + env(safe-area-inset-top,0px))}}
 #dots button{position:relative}#dots button::after{content:"";position:absolute;inset:-16px}
 .arch{border-radius:999px 999px 20px 20px;padding:6px;background:var(--card);border:1px solid var(--gold);box-shadow:0 30px 50px -30px var(--rose)}
 .arch img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 30%;border-radius:999px 999px 14px 14px;background:var(--bg2)}
@@ -41,6 +44,8 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif}
 #inicio h1{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}#inicio p.mut{animation:rise .9s .12s cubic-bezier(.2,.7,.2,1) both}
 #inicio .arch{animation:rise 1s .2s cubic-bezier(.2,.7,.2,1) both}#inicio .arch:nth-child(2){animation-delay:.32s}#inicio .arch:nth-child(3){animation-delay:.44s}
 .fab{position:fixed;right:16px;bottom:calc(env(safe-area-inset-bottom,0px) + 16px);z-index:40;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--rose2),var(--rose));color:#2a1512;box-shadow:0 12px 26px -10px var(--rose);transition:transform .25s}.fab:hover{transform:scale(1.08)}
+@media (max-width:1023px){#menuBtn{display:none}#mobileMenu{display:flex!important;flex-direction:row;gap:24px;overflow-x:auto;white-space:nowrap;padding:4px 20px 0!important;scrollbar-width:none;-webkit-mask-image:linear-gradient(to right,#000 88%,transparent);mask-image:linear-gradient(to right,#000 88%,transparent)}#mobileMenu::-webkit-scrollbar{display:none}#mobileMenu a{flex:none;display:flex!important;align-items:center;min-height:44px;padding:0!important;font-size:.95rem}#mobileMenu a.act{color:var(--rtx);box-shadow:inset 0 -2px 0 var(--rtx)}html{scroll-padding-top:calc(120px + env(safe-area-inset-top,0px))}#inicio{padding-top:8.5rem}}
+@media (max-width:639px){#inicio .btn{width:100%;justify-content:center}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important}}
 .gal{position:relative;overflow:hidden;border-radius:22px;aspect-ratio:4/5;cursor:pointer;transition:transform .4s}
 .gal:hover{transform:scale(1.02)}
@@ -72,16 +77,16 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.9 11.9 0 0 0 12 0C5.4 0 0 5.4 0 12c0 2.1.6 4.200 1.600 6L0 24l6.200-1.600A12 12 0 0 0 12 24c6.600 0 12-5.400 12-12 0-3.200-1.200-6.200-3.500-8.500zM12 22a10 10 0 0 1-5.100-1.400l-.4-.2-3.700 1 1-3.600-.2-.4A10 10 0 1 1 12 22zm5.500-7.500c-.3-.2-1.800-.9-2-1-.3-.1-.5-.2-.7.200s-.8 1-1 1.200c-.2.200-.4.200-.7.100a8 8 0 0 1-4-3.500c-.3-.5.300-.5.800-1.600.1-.2 0-.4 0-.5l-.9-2.200c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.100-.8.400-.3.300-1 1-1 2.500s1 2.900 1.200 3.100c.1.200 2 3.100 4.900 4.300 1.800.8 2.500.9 3.400.7.600-.1 1.800-.7 2-1.400.3-.7.300-1.300.2-1.400l-.6-.3z"/></svg>
         <span class="hidden sm:inline">Agendar Horário</span><span class="sm:hidden">Agendar</span>
       </a>
-      <button id="menuBtn" class="lg:hidden p-2" aria-label="Abrir menu"><svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h18M4 13h18M4 19h18"/></svg></button>
+      <button id="menuBtn" class="hidden" aria-label="Abrir menu"><svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h18M4 13h18M4 19h18"/></svg></button>
     </div>
   </div>
-  <nav id="mobileMenu" class="hidden lg:hidden px-5 pb-4 flex-col gap-3" style="border-top:1px solid var(--line)">
-    <a class="l block pt-3" href="#inicio">Início</a><a class="l block" href="#sobre">Sobre a Pri</a><a class="l block" href="#servicos">Serviços</a><a class="l block" href="#galeria">Galeria</a><a class="l block" href="#cabelos">Cabelos</a><a class="l block" href="#depoimentos">Depoimentos</a><a class="l block" href="#localizacao">Localização</a><a class="l block" href="#contato">Contato</a>
+  <nav id="mobileMenu" aria-label="Seções do site" class="lg:hidden flex gap-6 overflow-x-auto whitespace-nowrap px-5" style="border-top:1px solid var(--line);scrollbar-width:none;-webkit-mask-image:linear-gradient(to right,#000 90%,transparent);mask-image:linear-gradient(to right,#000 90%,transparent)">
+    <a class="l block" href="#inicio">Início</a><a class="l block" href="#sobre">Sobre a Pri</a><a class="l block" href="#servicos">Serviços</a><a class="l block" href="#galeria">Galeria</a><a class="l block" href="#cabelos">Cabelos</a><a class="l block" href="#depoimentos">Depoimentos</a><a class="l block" href="#localizacao">Localização</a><a class="l block" href="#contato">Contato</a>
   </nav>
 </header>
 
 <main>
-<section id="inicio" class="pt-32 pb-20 px-5">
+<section id="inicio" class="pt-36 lg:pt-32 pb-20 px-5">
   <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-14 items-center">
     <div>
       <svg class="w-72 sm:w-80 h-auto mb-6" viewBox="0 0 360 124" role="img" aria-label="Priscila, Espaço da Pri"><defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8C6420"/><stop offset=".35" stop-color="#E9C874"/><stop offset=".65" stop-color="#B8893E"/><stop offset="1" stop-color="#F3DC9A"/></linearGradient></defs><path d="M0 8h120l8-8h104l8 8h120M0 14h110M250 14h110" fill="none" stroke="url(#g2)" stroke-width=".9"/><text x="10" y="70" font-family="'Playfair Display',Georgia,serif" font-size="56" font-weight="500" fill="url(#g2)" textLength="340" lengthAdjust="spacing">PRISCILA</text><path d="M0 90h50M310 90h50" stroke="url(#g2)" stroke-width=".9"/><text x="60" y="96" font-family="Poppins,sans-serif" font-size="15" font-weight="500" letter-spacing="1" fill="url(#g2)" textLength="240" lengthAdjust="spacing">ESPAÇO DA PRI</text><path d="M0 116h360" stroke="url(#g2)" stroke-width=".9"/></svg>
@@ -260,11 +265,14 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 
 <script>
 document.getElementById('yr').textContent=new Date().getFullYear();
+const links=[...document.querySelectorAll('#mobileMenu a')];
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(a=>{const on=a.getAttribute('href')==='#'+e.target.id;a.classList.toggle('act',on);if(on&&matchMedia('(max-width:1023px)').matches)a.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'})})}}),{rootMargin:'-45% 0px -50% 0px'});
+document.querySelectorAll('main section[id]').forEach(s=>io.observe(s));
 const pick=(t,s)=>{const i=document.querySelector(s),o=document.getElementById(t);if(i&&o)o.src=i.src};
 pick('hA','#tabMaos .ph img');pick('hB','#tabTrab .ph img');pick('hC','#tabPes .ph img');
 const mm=document.getElementById('mobileMenu');
 document.getElementById('menuBtn').onclick=()=>{mm.classList.toggle('hidden');mm.classList.toggle('flex')};
-mm.querySelectorAll('a').forEach(a=>a.onclick=()=>{mm.classList.add('hidden');mm.classList.remove('flex')});
+
 document.querySelectorAll('#chips .chip').forEach(b=>b.onclick=()=>{
   document.querySelectorAll('#chips .chip').forEach(x=>x.classList.remove('on'));b.classList.add('on');
   document.querySelectorAll('.svc').forEach(s=>s.classList.toggle('hide',b.dataset.f!=='all'&&s.dataset.c!==b.dataset.f));
